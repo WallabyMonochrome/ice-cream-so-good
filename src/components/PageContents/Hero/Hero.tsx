@@ -5,6 +5,8 @@ import Image from "next/image";
 import globalStyles from "@/app/global.module.scss"
 import placeholderIceCream from "@/assets/placeholderIceCream.png";
 import React from "react";
+import {TestView} from "@/components/3D/TestView";
+import {BigIceCream} from "@/components/3D/BigIceCream";
 
 export const Hero: React.FC = () => {
   return (
@@ -22,12 +24,13 @@ export const Hero: React.FC = () => {
           </div>
         </div>
         <div className={styles.icecream3D}>
-          <Image
-            sizes={"100vw"}
-            fill={true}
-            src={placeholderIceCream}
-            alt={"Profile Image"}
-            style={{objectFit: "contain"}}/>
+          <BigIceCream />
+          {/*<Image*/}
+          {/*  sizes={"100vw"}*/}
+          {/*  fill={true}*/}
+          {/*  src={placeholderIceCream}*/}
+          {/*  alt={"Profile Image"}*/}
+          {/*  style={{objectFit: "contain"}}/>*/}
         </div>
       </div>
       <div className={styles.displaySmallScreen}>
