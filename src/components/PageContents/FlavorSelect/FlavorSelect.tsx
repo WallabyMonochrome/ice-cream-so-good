@@ -4,6 +4,7 @@ import {TextAlternative, TextBase} from "@/components/Typography/Typography";
 import {useEffect, useRef, useState} from "react";
 import {FlavorButton} from "@/components/Buttons/FlavorButton/FlavorButton";
 import {WatchOurStoryButton} from "@/components/Buttons/WatchOurStoryButton/WatchOurStoryButton";
+import {ColorBandPicture} from "@/components/ColorBandPicture/ColorBandPicture";
 
 export const FlavorSelect: React.FC = () => {
   const [selectedFlavorIndex, setSelectedFlavorIndex] = useState<number>(2);
@@ -128,12 +129,11 @@ export const FlavorSelect: React.FC = () => {
               <TextBase fontColor={"black"}>Get the scoops</TextBase>
               <WatchOurStoryButton />
             </div>
-            <div className={`${styles.flavorShowcase}`}>
-            </div>
-            <div className={`${styles.flavorLeftSide}`}>
-              <TextAlternative fontColor={"black"} size={"mediumsmall"}>Everyone loves ice cream</TextAlternative>
+            <div className={`${styles.flavorShowcase}`}></div>
+            <div className={`${styles.flavorRightSide}`}>
+              <TextAlternative fontColor={"black"} size={"mediumsmall"}><div className={styles.textWithComponent}>Everyone loves <ColorBandPicture isGirl={true} /> ice cream</div></TextAlternative>
               <TextAlternative fontColor={"black"} size={"mediumsmall"}>But nobody screams with joy at</TextAlternative>
-              <TextAlternative fontColor={"black"} size={"mediumsmall"}>the cost complexity</TextAlternative>
+              <TextAlternative fontColor={"black"} size={"mediumsmall"}><div className={styles.textWithComponent}>the cost <ColorBandPicture isGirl={false}/> complexity.</div></TextAlternative>
             </div>
           </div>
         </div>

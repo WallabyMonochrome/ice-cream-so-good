@@ -1,0 +1,18 @@
+.girlBackground {
+  background: #FA46A7;
+}
+.boyBackground {
+  background: #20B072;
+}
+.bandBackground {
+  position: relative;
+  width: 80px;
+  height: 30px;
+  border-radius: 50px;
+  .bandPhoto {
+    position: absolute;
+    top: -20px;
+    bottom: 0;
+    width: 100%;
+  }
+}
