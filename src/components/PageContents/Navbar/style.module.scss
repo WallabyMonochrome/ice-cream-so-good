@@ -1,0 +1,30 @@
+.navbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0px;
+  border-bottom: 1px var(--pageLightBrown) solid;
+
+  .navOptions {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  .navProfile {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+  }
+
+  .profilePicture {
+    img {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+}

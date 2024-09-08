@@ -1,0 +1,42 @@
+.emailButtonStyle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 40px; /* Rounded edges */
+  padding: 10px 0;
+  cursor: pointer;
+  width: 320px; /* Adjust width based on design */
+  height: 55px; /* Adjust height */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  .buttonContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .buttonTextContent {
+    padding-left: 18px;
+  }
+
+}
+
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF2293; /* Play button background color */
+  border-radius: 40px;
+  margin-left: auto;
+  width: 100px;
+  height: 53px;
+}
+
+.playIcon {
+  color: white;
+  font-size: 16px;
+}

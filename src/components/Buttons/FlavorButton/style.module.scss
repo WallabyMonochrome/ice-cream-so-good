@@ -1,0 +1,16 @@
+.flavorButtonStyle {
+  background: white;
+  outline: none;
+  border: 1px solid black;
+  color: black;
+  width: 170px;
+  height: 50px;
+  border-radius: 20px; /* Give it an egg-like shape */
+  position: relative; /* For positioning the shadow */
+  text-align: center;
+  cursor: pointer;
+}
+.isSelected {
+  transform: scale(1.2);
+}
+

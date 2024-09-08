@@ -1,37 +1,18 @@
 "use client"
-import {useMemo} from 'react';
-import {Canvas} from '@react-three/fiber';
-import {
-  Center, Loader, OrbitControls,
-} from "@react-three/drei";
-import vertex from "../shaders/planet/vertex.glsl";
-import fragment from "../shaders/planet/fragment.glsl";
-import {ShaderMaterial} from "three";
+import styles from "./style.module.scss"
+import {Navbar} from "@/components/PageContents/Navbar/Navbar";
+import {Hero} from "@/components/PageContents/Hero/Hero";
+import {FlavorSelect} from "@/components/PageContents/FlavorSelect/FlavorSelect";
 
-function ShaderSphere() {
-  const shaderMaterial = useMemo(() => new ShaderMaterial({
-    vertexShader: vertex, fragmentShader: fragment, uniforms: {},
-  }), []);
+const MainPage = () => {
 
-  // useFrame((state, delta) => {
-  // });
-
-  return (<mesh>
-    <sphereGeometry args={[3, 64, 64]}/>
-    <primitive object={shaderMaterial} attach="material"/>
-  </mesh>);
-}
-
-const Experience = () => {
-
-  return (<>
-    <Canvas shadows>
-      <OrbitControls/>
-      <Center>
-        <ShaderSphere/>
-      </Center>
-    </Canvas>
-    <Loader/>
-  </>);
+  return (
+    <>
+      <div className={styles.landingPageContainer}>
+        <Navbar/>
+        <Hero />
+        <FlavorSelect />
+      </div>
+    </>);
 };
-export default Experience;
+export default MainPage;

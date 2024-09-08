@@ -1,0 +1,29 @@
+.textBase {
+  font-size: 1rem;
+  line-height: 1.7rem;
+  color: white;
+}
+.textAlternative {
+  font-family: "cooper-black-std", serif;
+  font-weight: 100;
+}
+
+.smallSize {
+  font-size: 1rem;
+
+}
+.mediumSize {
+  font-size: 1.5rem;
+}
+
+.mediumSmallSize {
+  font-size: 1.25rem;
+}
+
+.largeSize {
+  font-size: 6.5rem;
+  line-height: 0.8;
+  @media (max-width: 1024px) {
+    font-size: 5.5rem;
+  }
+}
