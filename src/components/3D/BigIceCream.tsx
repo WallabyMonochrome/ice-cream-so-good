@@ -2,7 +2,7 @@ import { Box, Center, Environment, OrbitControls, PerspectiveCamera, View, useGL
 
 export const BigIceCream = () => {
   // Load the GLTF model (adjust the path as per your project structure)
-  const { scene } = useGLTF("/models/iceCream.glb");
+  const { scene } = useGLTF("/models/icecream.glb");
   const sceneCup= useGLTF("/models/cup.glb");
 
   return (
