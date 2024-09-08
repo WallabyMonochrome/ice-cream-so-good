@@ -14,7 +14,7 @@ export const BigIceCream = () => {
           {/* Display the GLTF model */}
           <primitive  position={[0,1, 0]} object={scene} scale={0.7} onClick={() => console.log("Model Clicked")} />
           <primitive position={[0,-1, 0]} object={sceneCup.scene} scale={1} onClick={() => console.log("Model Clicked")} />
-          <Environment preset="dawn" />
+          <Environment  preset="sunset" />
         </Center>s
       </View>
     </>
