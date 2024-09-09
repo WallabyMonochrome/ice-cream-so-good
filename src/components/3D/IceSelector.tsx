@@ -96,7 +96,3 @@ export const IceSelectorView = ({selectedIce}: { selectedIce: number }) => {
     </>
   )
 }
-
-// Ensure GLTFLoader is cached and available
-useGLTF.preload("/models/icecream.glb");
-useGLTF.preload("/models/cup.glb");
