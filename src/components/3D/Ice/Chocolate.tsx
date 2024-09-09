@@ -12,7 +12,7 @@ export const ChocolateBall = ({scale = 0.5, position, rotation, chocolateType}: 
   const {nodes} = useGLTF("/models/iceCreamBaked.glb");
   const [iceCreamTexture, normalMap] = useTexture([
     "/models/texture/icecreamVanill.png",  // Base color texture
-    "/models/texture/IceCreamBakeNormal.png"  // Normal map
+    "/models/texture/icecreambakenormal.png"  // Normal map
   ]);
 
   // Ensure textures are only processed once

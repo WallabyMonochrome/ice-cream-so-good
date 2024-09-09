@@ -18,7 +18,7 @@ const IceBall = () => {
   const {scene} = useGLTF("/models/iceCreamB.glb");
   const [iceCreamTexture, normalMap] = useTexture([
     "/models/texture/IceCreamBakeA.png",  // Base color texture
-    "/models/texture/IceCreamBakeNormal.png"  // Normal map
+    "/models/texture/icecreambakenormal.png"  // Normal map
   ]);
   iceCreamTexture.flipY = false;
   iceCreamTexture.colorSpace = SRGBColorSpace;
