@@ -1,13 +1,15 @@
 import styles from "./style.module.scss"
 import globalStyles from "@/app/global.module.scss"
 import {TextAlternative, TextBase} from "@/components/Typography/Typography";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {FlavorButton} from "@/components/Buttons/FlavorButton/FlavorButton";
 import {WatchOurStoryButton} from "@/components/Buttons/WatchOurStoryButton/WatchOurStoryButton";
 import {ColorBandPicture} from "@/components/ColorBandPicture/ColorBandPicture";
+import {BigIceCream} from "@/components/3D/BigIceCream";
+import { IceSelectorView} from "@/components/3D/IceSelector";
 
 export const FlavorSelect: React.FC = () => {
-  const [selectedFlavorIndex, setSelectedFlavorIndex] = useState<number>(2);
+  const [selectedFlavorIndex, setSelectedFlavorIndex] = useState<number>(3);
 
   const curveRef = useRef<HTMLDivElement | null>(null);
   const flavorBackgroundRef = useRef<HTMLDivElement | null>(null);
@@ -83,19 +85,19 @@ export const FlavorSelect: React.FC = () => {
   const buttonData = [
     {
       backgroundColor: "#EBFFF4",
-      text: "Vanilla Being",
+      text: "La Vanille",
     },
     {
       backgroundColor: "#FCE5DD",
-      text: "Chocolate Bliss",
+      text: "3 Chocolats",
     },
     {
       backgroundColor: "#FDFDF3",
-      text: "Mango Magic",
+      text: "Bretzel",
     },
     {
       backgroundColor: "#E3F6BE",
-      text: "Strawberry Dream",
+      text: "Choucroute",
     },
     {
       backgroundColor: "#E8E8E8",
@@ -109,8 +111,6 @@ export const FlavorSelect: React.FC = () => {
       <div style={{maxWidth: "1800px", overflow: "hidden", margin: "auto"}}>
         <div ref={flavorBackgroundRef} className={styles.flavorBackground}>
         </div>
-        {/*<div ref={buttonRefA} className={styles.buttonA}>Button</div>*/}
-        {/* Map through the buttonData array to render buttons */}
         {buttonData.map((button, index) => (
           <div
             key={index}
@@ -129,7 +129,9 @@ export const FlavorSelect: React.FC = () => {
               <TextBase fontColor={"black"}>Get the scoops</TextBase>
               <WatchOurStoryButton />
             </div>
-            <div className={`${styles.flavorShowcase}`}></div>
+            <div className={`${styles.flavorShowcase}`}>
+              <IceSelectorView selectedIce={selectedFlavorIndex}  />
+            </div>
             <div className={`${styles.flavorRightSide}`}>
               <TextAlternative fontColor={"black"} size={"mediumsmall"}><div className={styles.textWithComponent}>Everyone loves <ColorBandPicture isGirl={true} /> ice cream</div></TextAlternative>
               <TextAlternative fontColor={"black"} size={"mediumsmall"}>But nobody screams with joy at</TextAlternative>

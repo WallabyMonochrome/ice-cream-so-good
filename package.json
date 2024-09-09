@@ -12,6 +12,7 @@
     "@react-three/drei": "^9.92.3",
     "@react-three/fiber": "^8.15.12",
     "glslify-loader": "^2.0.0",
+    "gsap": "^3.12.5",
     "next": "14.1.0",
     "r3f-perf": "^7.1.2",
     "raw-loader": "^4.0.2",

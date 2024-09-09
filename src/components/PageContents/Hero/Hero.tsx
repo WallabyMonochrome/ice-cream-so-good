@@ -25,12 +25,6 @@ export const Hero: React.FC = () => {
         </div>
         <div className={styles.icecream3D}>
           <BigIceCream />
-          {/*<Image*/}
-          {/*  sizes={"100vw"}*/}
-          {/*  fill={true}*/}
-          {/*  src={placeholderIceCream}*/}
-          {/*  alt={"Profile Image"}*/}
-          {/*  style={{objectFit: "contain"}}/>*/}
         </div>
       </div>
       <div className={styles.displaySmallScreen}>
