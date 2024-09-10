@@ -15,6 +15,7 @@ export default function RootLayout({children}: {
   return (
     <html lang="en">
     <head>
+      <link rel="icon" href="logo.png" sizes="any"/>
       <link rel="stylesheet" href="https://use.typekit.net/rff6ght.css"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
