@@ -97,7 +97,7 @@ export const IceSelectorView = ({selectedIce}: { selectedIce: number }) => {
   return (
     <>
       {/*@ts-ignore*/}
-      <View style={{width: "100%", height: "inherit"}}>
+      <View style={{width: "100%", height: "inherit", touchAction: "none"}}>
         <PerspectiveCamera
           makeDefault // This ensures this camera is the default one used
           fov={50} // Field of view (adjust to your needs)
@@ -110,7 +110,7 @@ export const IceSelectorView = ({selectedIce}: { selectedIce: number }) => {
 
         >
           <group  scale={0.8} position={[0, 0.7, 0]}>
-            <group position={[0, 0., 0]} ref={groupRef}>
+            <group position={[0, 0., 0]} ref={groupRef} frustumCulled={false}>
               {selectedIce === 0 && <TheVanilla></TheVanilla>}
               {selectedIce === 1 && <ThreeChocolate></ThreeChocolate>}
               {selectedIce === 2 && <Bretzel></Bretzel>}

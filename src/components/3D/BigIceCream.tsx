@@ -88,7 +88,7 @@ export const BigIceCream = () => {
   return (
     <>
       {/*@ts-ignore*/}
-      <View style={{width: "inherit", height: "inherit"}}>
+      <View style={{width: "inherit", height: "inherit",  touchAction: "none"}}>
         <PerspectiveCamera
           makeDefault // This ensures this camera is the default one used
           fov={50} // Field of view (adjust to your needs)
