@@ -8,11 +8,14 @@ import {
   View,
   useGLTF,
   useTexture,
-  Float, PresentationControls
+  Float, PresentationControls, useProgress, ContactShadows
 } from "@react-three/drei"
-import {Color, RepeatWrapping, SRGBColorSpace, TangentSpaceNormalMap} from "three";
+import {Color, Mesh, RepeatWrapping, SRGBColorSpace, TangentSpaceNormalMap} from "three";
 import {VanillaBall} from "./Ice/Vanilla";
 import {ChocolateBall} from "./Ice/Chocolate";
+import {useEffect, useRef} from "react";
+import gsap from "gsap";
+import {useThree} from "@react-three/fiber";
 
 const IceBall = () => {
   const {scene} = useGLTF("/models/iceCreamB.glb");
@@ -57,29 +60,46 @@ const Cup = () => {
   )
 }
 
-export const BigIceCream = () => {
+const IceCreamScene = () => {
+  const iceCreamGroupRef: any = useRef<Mesh>(null); // Ref for the ice cream group
+  const {active} = useProgress(); // Track loading progress
 
+  useEffect(() => {
+    if (iceCreamGroupRef.current) {
+      if (!active) {
+        gsap.to(iceCreamGroupRef.current.scale, {x: 1, y: 1, z: 1, duration: 1.2, ease: "bounce.out"});
+      }
+    }
+  }, [active]);
+
+  return (
+    <>
+      <group scale={0.2} ref={iceCreamGroupRef} position={[0, 0.9, 0]}>
+        <Cup/>
+        <IceBall/>
+        <ChocolateBall scale={0.4} chocolateType={"dark"} position={[0.4, 0.25, -0.11]}/>
+        <VanillaBall position={[0, 0.3, 0.3]}/>
+      </group>
+        <ContactShadows position={[0, -0.6, 0]}  opacity={0.5} scale={10} blur={2} far={10} resolution={256} color="#000000" />
+    </>)
+}
+
+export const BigIceCream = () => {
   return (
     <>
       {/*@ts-ignore*/}
       <View style={{width: "inherit", height: "inherit"}}>
-        {/*<Center>*/}
         <PerspectiveCamera
           makeDefault // This ensures this camera is the default one used
           fov={50} // Field of view (adjust to your needs)
-          position={[0, 0.4, 4]} // Position of the camera (x, y, z)
+          position={[0, 0.4, 3.5]} // Position of the camera (x, y, z)
         />
         <PresentationControls global={true} rotation={[0.13, 0.1, 0.1]}
                               azimuth={[-Math.PI / 6, Math.PI / 6]}  // Limit horizontal rotation (-30 to 30 degrees)
                               polar={[0, 0.3]}  // Optionally limit vertical rotation (0 to 90 degrees)
         >
           <Float floatIntensity={1} speed={2}>
-            <group position={[0, 0.7, 0]}>
-              <Cup/>
-              <IceBall/>
-              <ChocolateBall scale={0.4} chocolateType={"dark"} position={[0.4, 0.25, -0.11]}/>
-              <VanillaBall position={[0, 0.3, 0.3]}/>
-            </group>
+            <IceCreamScene/>
           </Float>
         </PresentationControls>
         <Environment preset="dawn"/>

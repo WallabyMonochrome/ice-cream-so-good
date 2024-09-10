@@ -4,25 +4,32 @@ import {Navbar} from "@/components/PageContents/Navbar/Navbar";
 import {Hero} from "@/components/PageContents/Hero/Hero";
 import {FlavorSelect} from "@/components/PageContents/FlavorSelect/FlavorSelect";
 import {CanvasForView} from "@/components/3D/CanvasForView";
-import {Suspense, useRef} from "react";
-import {Loader, useProgress} from "@react-three/drei";
+import {Suspense, useRef, useEffect, useState} from "react";
+import {useProgress} from "@react-three/drei";
+import CustomLoader from "@/components/CustomLoader/CustomLoader";
+import {ReactLenis, useLenis} from "lenis/react";
 
 const MainPage = () => {
   const rootRef: any = useRef();
-  const {active, progress, errors, item, loaded, total} = useProgress();
-  console.log("Progress", progress, active);
-
-
+  const {progress, active, total, loaded} = useProgress(); // Track loading progress
   return (
     <>
-      <Suspense fallback={null}>
-        <div ref={rootRef} className={styles.landingPageContainer}>
+      <div ref={rootRef} className={styles.landingPageContainer}>
+          <ReactLenis autoRaf={true} options={{
+            lerp: 1,
+            wheelMultiplier: 1,
+            touchMultiplier: 1
+          }} root/>
+          <CustomLoader active={active}/>
+        <Suspense>
           <Navbar/>
           <Hero/>
           <FlavorSelect/>
           <CanvasForView eventSourceRef={rootRef}/>
-        </div>
-      </Suspense>
-    </>);
+        </Suspense>
+      </div>
+    </>
+  );
 };
+
 export default MainPage;

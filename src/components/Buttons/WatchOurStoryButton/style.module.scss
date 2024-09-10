@@ -16,24 +16,45 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
   }
 
   .buttonTextContent {
     padding-left: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.3s ease-in, padding-left 0.3s ease-out, opacity 1s ease-out; /* Separate transition for fade-out */
+
   }
 
+  &:active .buttonTextContent {
+    width: 0;
+    padding-left: 0;
+    opacity: 0;
+  }
 }
-
 
 .iconWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #FF2293; /* Play button background color */
+  background-color: #FF2293;
   border-radius: 40px;
   margin-left: auto;
   width: 100px;
   height: 53px;
+  //transform-origin: right;
+  transition: all 0.2s  ease;
+
+  &:hover {
+    width: 150px;
+  }
+
+  &:active {
+    width: 320px;
+    margin-left: 0px;
+  }
 }
 
 .playIcon {

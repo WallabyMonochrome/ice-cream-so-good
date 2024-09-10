@@ -2,7 +2,7 @@
   padding-top: 82px;
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 24px;
   @media (max-width: 1024px) {
     align-items: center;
     flex-direction: column;
@@ -13,7 +13,7 @@
     //background: pink;
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 500px;
     @media (max-width: 1024px) {
       min-height: 600px;
     }
@@ -39,7 +39,7 @@
 }
 
 .heroTitle {
-  max-width: 500px;
+  max-width: 530px;
   display: flex;
   flex-direction: column;
   gap: 2rem;

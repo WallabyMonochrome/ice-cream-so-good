@@ -1,19 +1,33 @@
-import React from "react";
-import styles from "./style.module.scss"
-import globalStyles from "@/app/global.module.scss"
+"use client"
+import React, {useEffect, useRef} from "react";
+import styles from "./style.module.scss";
+import globalStyles from "@/app/globalImport.module.scss";
 import {TextAlternative, TextBase} from "@/components/Typography/Typography";
 import Image from "next/image";
 import {BiMenuAltLeft} from "react-icons/bi";
-
 import placeholderProfile from "@/assets/Thib.jpeg";
+import {useProgress} from "@react-three/drei";
+import gsap from "gsap";
 
 export const Navbar: React.FC = () => {
+  const {active} = useProgress(); // Track loading progress
+  const navOptionsRef = useRef<HTMLDivElement>(null); // Ref for the navOptions
+
+  useEffect(() => {
+    if (!active && navOptionsRef.current) {
+      gsap.fromTo(navOptionsRef.current,
+        {y: -100, opacity: 0}, // Start position (offscreen, transparent)
+        {y: 0, opacity: 1, duration: 0.8, ease: "power3.out"} // End position (onscreen, visible)
+      );
+    }
+  }, [active]);
+
   return (
     <>
-      <div className={`${globalStyles.section}`}>
+      <div ref={navOptionsRef} className={`${globalStyles.section}`}>
         <div className={`${styles.navbarContainer}`}>
-          <div><TextAlternative size={"medium"}>Creamy</TextAlternative></div>
-          <div className={styles.navOptions}>
+          <div><TextAlternative size={"medium"}>Ice Quiche</TextAlternative></div>
+          <div className={styles.navOptions} >
             <TextBase><a>About</a></TextBase>
             <TextBase>Products</TextBase>
             <TextBase>Moods</TextBase>

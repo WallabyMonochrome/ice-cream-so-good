@@ -11,35 +11,60 @@
 
 .buttonContainer {
   position: absolute;
+
   //background: red;
   //padding: 10px 20px;
   transform: translate(-50%, -50%);
   z-index: 2;
 }
 
+.displayBigScreen {
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+.displaySmallScreen {
+  display: none;
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    background-color: var(--pageYellow);
+    padding: 12px 0;
+  }
+  .smallButtonContainer {
+    display: flex;
+  }
+}
+
 .visualCurve {
   display: none;
   position: absolute;
-  border: 1px dashed red;  /* Dashed border to visualize the ellipse */
-  border-radius: 50%;  /* Make it elliptical */
-  z-index: 1;  /* Send it behind the button */
-  pointer-events: none;  /* Ensure it doesn’t interfere with interactions */
+  border: 1px dashed red; /* Dashed border to visualize the ellipse */
+  border-radius: 50%; /* Make it elliptical */
+  z-index: 1; /* Send it behind the button */
+  pointer-events: none; /* Ensure it doesn’t interfere with interactions */
 }
 
 
-
 .flavorContainer {
+  display: flex;
   position: relative;
   margin-top: -1px;
   background: var(--pageYellow);
   height: 400px;
   overflow: hidden;
+  @media (max-width: 1024px) {
+    height: 100%;
+  }
 
   .flavorLeftSide {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
+
   .flavorRightSide {
     display: flex;
     flex-direction: column;
@@ -47,6 +72,7 @@
     margin-top: 20px;
     //justify-content: center;
   }
+
   .textWithComponent {
     display: flex;
     flex-wrap: wrap;
@@ -61,40 +87,51 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
   justify-content: space-between;
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
 }
 
 
 .curveContainer {
   position: relative;
   width: 100%;
-  height: 150px; /* Adjust height as necessary */
+  height: 150px;
 }
 
 .curveHolder {
   position: relative;
-  width: 100%; /* Full width */
-  height: 200px; /* Set the height */
+  width: 100%;
+  height: 200px;
 }
 
 .flavorShowcase {
-  position: relative; // Make the container relative to place the pseudo-element inside
+  position: relative;
   background: var(--pageBrown);
   width: 80%;
   margin: auto;
   height: 350px;
-  border-radius: 50% 50% 0 0; // Create the arch shape
-  overflow: hidden; // Hide the pseudo-element outside of the arch
+  border-radius: 50% 50% 0 0;
+  overflow: hidden;
+  order: 0;
+  @media (max-width: 1024px) {
+    order: 1;
+  }
 
   &::before {
     pointer-events: none;
     touch-action: none;
     content: '';
     position: absolute;
-    top: 10px; // Offset the border downward slightly
-    left: 10px; // Offset the border inward slightly
-    right: 10px; // Offset the border inward slightly
-    bottom: 10px; // Adjust to fit inside
-    border-radius: 50% 50% 0 0; // Match the parent border-radius
-    border: 2px solid #9A705A; // Semi-transparent white border
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 50% 50% 0 0;
+    border: 2px solid #9A705A;
+
   }
 }

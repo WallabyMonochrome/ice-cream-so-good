@@ -4,20 +4,22 @@ import {
   PerspectiveCamera,
   View,
   useGLTF,
-  PresentationControls
+  PresentationControls, ContactShadows
 } from "@react-three/drei"
 import {VanillaBall} from "@/components/3D/Ice/Vanilla";
 import {ChocolateBall} from "@/components/3D/Ice/Chocolate";
+import {useEffect, useRef} from "react";
+import gsap from "gsap";
 
 // Flavor
 
 const TheVanilla = () => {
   return (
     <>
-      <VanillaBall position={[-0.3, 0.2, 0.1]}/>
-      <VanillaBall position={[0.3, 0.35, -0.2]} rotation={[0, 0.5, 0.1]}/>
+      <VanillaBall position={[-0.5, 0.2, 0.1]}/>
+      <VanillaBall position={[0.35, 0.35, -0.2]} rotation={[0, 0.5, 0.1]}/>
       <VanillaBall position={[0.12, 0.75, -0.15]} rotation={[0, 0.5, 0.1]}/>
-      <Cup/>
+
     </>
   )
 }
@@ -28,7 +30,7 @@ const ThreeChocolate = () => {
       <ChocolateBall chocolateType={"dark"} position={[-0.3, 0.2, 0.1]}/>
       <ChocolateBall chocolateType={"light"} position={[0.3, 0.35, -0.2]} rotation={[0, 0.5, 0.1]}/>
       <ChocolateBall chocolateType={"white"} position={[0.12, 0.75, -0.15]} rotation={[0, 0.5, 0.1]}/>
-      <Cup/>
+
     </>
   )
 }
@@ -37,7 +39,6 @@ const Bretzel = () => {
   return (
     <>
       <ChocolateBall scale={0.75} chocolateType={"bretzel"} position={[-0., 0.1, 0.0]}/>
-      <Cup/>
     </>
   )
 }
@@ -45,11 +46,21 @@ const Bretzel = () => {
 const Choucroute = () => {
   return (
     <>
-      <ChocolateBall  chocolateType={"chou"} position={[-0.3, 0.2, 0.14]}/>
-      <ChocolateBall  chocolateType={"lardons"} position={[0.4, 0.35, -0.2]} rotation={[0, 0.2, 0.1]}/>
+      <ChocolateBall chocolateType={"chou"} position={[-0.3, 0.2, 0.14]}/>
+      <ChocolateBall chocolateType={"lardons"} position={[0.4, 0.35, -0.2]} rotation={[0, 0.2, 0.1]}/>
       <ChocolateBall scale={0.45} chocolateType={"saucisse"} position={[0.12, 0.85, -0.15]} rotation={[0, 0.1, 0.1]}/>
       <ChocolateBall chocolateType={"patate"} position={[-0.4, 0.55, -0.25]} rotation={[0, 1.5, 0.1]}/>
-      <Cup/>
+
+    </>
+  )
+}
+
+const Mirabelle = () => {
+  return (
+    <>
+      <ChocolateBall chocolateType={"mirabelle"} position={[-0.2, 0.2, 0.1]}/>
+      <ChocolateBall chocolateType={"mirabelle"} position={[0.35, 0.35, -0.2]} rotation={[0, 0.5, 0.1]}/>
+      <ChocolateBall chocolateType={"mirabelle"} position={[-0.2, 0.75, -0.15]} rotation={[0, 0.5, 0.1]}/>
     </>
   )
 }
@@ -70,6 +81,18 @@ const Cup = () => {
 }
 
 export const IceSelectorView = ({selectedIce}: { selectedIce: number }) => {
+  const groupRef: any = useRef(null);
+  useEffect(() => {
+    if (groupRef.current) {
+      gsap.fromTo(groupRef.current.scale, {x: 0, y: 0, z: 0}, {
+        x: 0.8,
+        y: 0.8,
+        z: 0.8,
+        duration: 0.3,
+        ease: "power1.out"
+      });
+    }
+  }, [selectedIce]);
 
   return (
     <>
@@ -81,17 +104,25 @@ export const IceSelectorView = ({selectedIce}: { selectedIce: number }) => {
           position={[-0, 0.8, 4]} // Position of the camera (x, y, z)
         />
         <PresentationControls global={true}
+                              rotation={[0.1, 0, 0]}
                               azimuth={[-Math.PI / 6, Math.PI / 6]}  // Limit horizontal rotation (-30 to 30 degrees)
-                              polar={[0, 0.9]}  // Opt/**/ionally limit vertical rotation (0 to 90 degrees)
+                              polar={[0, 0.1]}
+
         >
-          <group scale={0.8} position={[0, 0.7, 0]}>
-            {selectedIce === 0 && <TheVanilla></TheVanilla>}
-            {selectedIce === 1 && <ThreeChocolate></ThreeChocolate>}
-            {selectedIce === 2 && <Bretzel></Bretzel>}
-            {selectedIce === 3 && <Choucroute></Choucroute>}
+          <group  scale={0.8} position={[0, 0.7, 0]}>
+            <group position={[0, 0., 0]} ref={groupRef}>
+              {selectedIce === 0 && <TheVanilla></TheVanilla>}
+              {selectedIce === 1 && <ThreeChocolate></ThreeChocolate>}
+              {selectedIce === 2 && <Bretzel></Bretzel>}
+              {selectedIce === 3 && <Choucroute></Choucroute>}
+              {selectedIce === 4 && <Mirabelle></Mirabelle>}
+            </group>
+            <Cup/>
           </group>
         </PresentationControls>
         <Environment preset="dawn"/>
+        <ContactShadows position={[0, -0.5, 0]} opacity={0.5} scale={10} blur={2} far={10} resolution={256}
+                        color="#000000"/>
       </View>
     </>
   )

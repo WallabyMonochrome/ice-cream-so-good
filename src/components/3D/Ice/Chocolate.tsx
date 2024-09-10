@@ -6,7 +6,7 @@ export const ChocolateBall = ({scale = 0.5, position, rotation, chocolateType}: 
   scale?: number,
   position: [x: number, y: number, z: number],
   rotation?: [x: number, y: number, z: number],
-  chocolateType?: "dark" | "light" | "white" | "bretzel" | "chou" | "saucisse" | "lardons" | "patate"
+  chocolateType?: "dark" | "light" | "white" | "bretzel" | "chou" | "saucisse" | "lardons" | "patate" | "mirabelle"
 }) => {
   // Load the model and textures once
   const {nodes} = useGLTF("/models/iceCreamBaked.glb");
@@ -50,6 +50,9 @@ export const ChocolateBall = ({scale = 0.5, position, rotation, chocolateType}: 
         break;
       case "patate":
         color = "#E8C547"
+        break;
+        case "mirabelle":
+        color = "#F4C430"
         break;
       default:
         return;

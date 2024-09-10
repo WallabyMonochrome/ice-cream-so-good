@@ -9,7 +9,8 @@ export const FlavorButton = ({text, onClick, backgroundColor, isSelected}: {
   isSelected: boolean,
 }) => {
   return (
-    <button onClick={() => onClick()} style={{backgroundColor: backgroundColor}} className={`${styles.flavorButtonStyle} ${isSelected ? styles.isSelected : ""}`}>
+    <button
+      onClick={() => onClick()} style={{backgroundColor: backgroundColor}} className={`${styles.flavorButtonStyle} ${isSelected ? styles.isSelected : ""}`}>
       <TextAlternative size={"small"}>{text}</TextAlternative>
     </button>)
 }

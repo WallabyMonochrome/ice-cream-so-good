@@ -5,12 +5,23 @@
   color: black;
   width: 170px;
   height: 50px;
-  border-radius: 20px; /* Give it an egg-like shape */
-  position: relative; /* For positioning the shadow */
+  border-radius: 20px;
+  position: relative;
   text-align: center;
   cursor: pointer;
-}
-.isSelected {
-  transform: scale(1.2);
-}
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
+  &:hover {
+    transform: scale(1.1);
+    box-shadow:
+            0 3px 1px white,
+            0 3px 0px 1px black;
+  }
+
+  &.isSelected {
+    transform: scale(1.3);
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}

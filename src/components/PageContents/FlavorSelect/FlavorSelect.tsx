@@ -1,5 +1,5 @@
 import styles from "./style.module.scss"
-import globalStyles from "@/app/global.module.scss"
+import globalStyles from "@/app/globalImport.module.scss"
 import {TextAlternative, TextBase} from "@/components/Typography/Typography";
 import React, {useEffect, useRef, useState} from "react";
 import {FlavorButton} from "@/components/Buttons/FlavorButton/FlavorButton";
@@ -9,7 +9,7 @@ import {BigIceCream} from "@/components/3D/BigIceCream";
 import { IceSelectorView} from "@/components/3D/IceSelector";
 
 export const FlavorSelect: React.FC = () => {
-  const [selectedFlavorIndex, setSelectedFlavorIndex] = useState<number>(3);
+  const [selectedFlavorIndex, setSelectedFlavorIndex] = useState<number>(2);
 
   const curveRef = useRef<HTMLDivElement | null>(null);
   const flavorBackgroundRef = useRef<HTMLDivElement | null>(null);
@@ -101,16 +101,17 @@ export const FlavorSelect: React.FC = () => {
     },
     {
       backgroundColor: "#E8E8E8",
-      text: "Banana gelato",
+      text: "Mirabelle",
     }
   ];
 
   return (
     <>
-      <div ref={curveRef} className={styles.visualCurve}></div>
+      {/*<div ref={curveRef} className={styles.visualCurve}></div>*/}
       <div style={{maxWidth: "1800px", overflow: "hidden", margin: "auto"}}>
         <div ref={flavorBackgroundRef} className={styles.flavorBackground}>
         </div>
+        <div className={styles.displayBigScreen}>
         {buttonData.map((button, index) => (
           <div
             key={index}
@@ -120,7 +121,17 @@ export const FlavorSelect: React.FC = () => {
             <FlavorButton isSelected={index === selectedFlavorIndex} text={button.text} onClick={() => setSelectedFlavorIndex(index)} backgroundColor={button.backgroundColor} />
           </div>
         ))}
-
+        </div>
+        <div className={styles.displaySmallScreen}>
+          {buttonData.map((button, index) => (
+            <div
+              key={index}
+              className={styles.smallButtonContainer} // Apply custom className from buttonData
+            >
+              <FlavorButton isSelected={index === selectedFlavorIndex} text={button.text} onClick={() => setSelectedFlavorIndex(index)} backgroundColor={button.backgroundColor} />
+            </div>
+          ))}
+        </div>
 
         <div className={`${styles.flavorContainer}`}>
           <div className={`${globalStyles.section} ${styles.flavorSelectorContent}`}>
