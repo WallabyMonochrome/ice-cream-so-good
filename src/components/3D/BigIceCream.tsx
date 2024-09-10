@@ -40,7 +40,7 @@ const IceBall = () => {
 
   return (
     <>
-      <primitive position={[-0.35, -0.2, -0.2]} object={scene} scale={0.4}
+      <primitive position={[-0.33, -0.2, 0]} object={scene} scale={0.5}
                  onClick={() => console.log("Model Clicked")}/>
     </>
   )
@@ -77,7 +77,7 @@ const IceCreamScene = () => {
       <group scale={0.2} ref={iceCreamGroupRef} position={[0, 0.9, 0]}>
         <Cup/>
         <IceBall/>
-        <ChocolateBall scale={0.4} chocolateType={"dark"} position={[0.4, 0.25, -0.11]}/>
+        <ChocolateBall scale={0.5} chocolateType={"dark"} position={[0.36, 0.25, -0.11]}/>
         <VanillaBall position={[0, 0.3, 0.3]}/>
       </group>
         <ContactShadows position={[0, -0.6, 0]}  opacity={0.5} scale={10} blur={2} far={10} resolution={256} color="#000000" />

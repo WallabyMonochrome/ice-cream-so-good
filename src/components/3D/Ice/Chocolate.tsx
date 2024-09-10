@@ -63,7 +63,7 @@ export const ChocolateBall = ({scale = 0.5, position, rotation, chocolateType}: 
     material.color = new Color(color); // Neutralize base color
     material.map = iceCreamTexture;  // Set the custom texture
     material.normalMap = normalMap;  // Apply normal map
-    material.roughness = 0.2;  // Set roughness
+    material.roughness = 0.35;  // Set roughness
     material.normalScale.set(0.5, 0.5);  // Set normal map intensity
     return material;
     // @ts-ignore
