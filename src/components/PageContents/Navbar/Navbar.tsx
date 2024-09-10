@@ -5,7 +5,7 @@ import globalStyles from "@/app/globalImport.module.scss";
 import {TextAlternative, TextBase} from "@/components/Typography/Typography";
 import Image from "next/image";
 import {BiMenuAltLeft} from "react-icons/bi";
-import placeholderProfile from "@/assets/Thib.jpeg";
+import placeholderProfile from "@/assets/Thib.jpg";
 import {useProgress} from "@react-three/drei";
 import gsap from "gsap";
 
